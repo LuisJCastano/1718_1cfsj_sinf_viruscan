@@ -2,6 +2,7 @@
 # Simple script to launch antivirus tools
 
 # Include functions from other file
+#d
 source tools.sh
 
 echo 'Please enter your choice: '
