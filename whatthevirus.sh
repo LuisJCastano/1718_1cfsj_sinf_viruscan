@@ -4,23 +4,23 @@
 # Include functions from other file
 source tools.sh
 
-# Main body
-Action=$(simple_menu)
-case $Action
-  1 )
-    freshclam
-    ;;
-
-  2 )
-    Directory=$(provide_dir)
-    clamscan $directory
-    ;;
-
-  * )
-    echo "sorry, wong option"
-    exit 1
-    ;;
-
-  esac
-
-  exit 0
+echo 'Please enter your choice: '
+options=("Option 1" "Option 2" "Option 3" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Option 1")
+            echo "you chose choice 1"
+            ;;
+        "Option 2")
+            echo "you chose choice 2"
+            ;;
+        "Option 3")
+            echo "you chose choice 3"
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
