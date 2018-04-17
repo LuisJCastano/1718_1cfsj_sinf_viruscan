@@ -4,24 +4,38 @@
 # Include functions from other file
 #d
 source tools.sh
+# Main body
 
-echo 'Please enter your choice: '
-options=("Option 1" "Option 2" "Option 3" "Quit")
-select opt in "${options[@]}"
+clear
+while true
 do
-    case $opt in
-        "Option 1")
-            echo "you chose choice 1"
-            ;;
-        "Option 2")
-            echo "you chose choice 2"
-            ;;
-        "Option 3")
-            echo "you chose choice 3"
-            ;;
-        "Quit")
-            break
-            ;;
-        *) echo invalid option;;
-    esac
+  simple_menu
+  case $Option in
+    1 )
+      echo "1 .- Install"
+      sudo apt-get install clamav clamav-daemon -y
+      ;;
+
+    2 )
+      echo "3 .- Scan all"
+      sudo freshclam
+      ;;
+
+    3 )
+      directory=$(provide_dir)
+      clamscan $directory
+      ;;
+
+    5 )
+      echo "Exit"
+      exit 1
+      ;;
+
+    * )
+      echo "sorry, wrong option"
+      exit 1
+      ;;
+
+  esac
 done
+exit 0
