@@ -1,9 +1,5 @@
 # File that contains functions for antivirus launcher whatthevirus.sh
 # don not execute it directly
-<<<<<<< HEAD
-#hi
-=======
->>>>>>> upstream/master
 
 simple_menu () {
   echo "Please, write an option:"
@@ -13,16 +9,10 @@ simple_menu () {
   echo "4 .- Scan all"
   echo "5 .- Exit"
 
-<<<<<<< HEAD
-
-  read $Option
-exit $Option
-=======
 echo "Introduce your option: "
   read Option
 
 #exit $Option
->>>>>>> upstream/master
 }
 
 provide_dir () {
