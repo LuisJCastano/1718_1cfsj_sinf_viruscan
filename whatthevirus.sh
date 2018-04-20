@@ -13,21 +13,43 @@ do
   case $Option in
     1 )
       echo "1 .- Install"
-      sudo apt-get install clamav clamav-daemon -y
+      sudo apt-get install clamav clamav-daemon -y > /dev/null 2> /dev/null
+
+      if [ $? = 0 ]
+        then
+          echo "Installed correctly"
+        else
+          echo "Installation failed"
+      fi
       ;;
 
     2 )
-      echo "3 .- Scan all"
-      sudo freshclam
+      echo "2 .- Update database clamav"
+      sudo freshclam > /dev/null 2> /dev/null
+
+      if [ $? = 0 ]
+        then
+          echo "Update correctly"
+        else
+          echo "Updated failed"
+      fi
       ;;
 
     3 )
-      directory=$(provide_dir)
-      clamscan $directory
+      echo "3 .- Scan directory."
+      provide_dir
+      echo "scanning "$Dir"..."
+      clamscan /$Dir
+      ;;
+
+    4 )
+      echo "4 .- Scan all"
+      sudo clamscan -r /
       ;;
 
     5 )
       echo "Exit"
+      clear
       exit 1
       ;;
 
