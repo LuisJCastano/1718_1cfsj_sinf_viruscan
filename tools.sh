@@ -7,16 +7,29 @@ simple_menu () {
   echo "2 .- Refresh virus database"
   echo "3 .- Scan a directory"
   echo "4 .- Scan all"
-  echo "5 .- Exit"
+  echo "5 .- Remove clamav"
+  echo "6 .- Show version"
+  echo "7 .- Help"
+  echo "8 .- Exit"
 
 echo "Introduce your option: "
   read Option
-
-#exit $Option
 }
 
 provide_dir () {
   echo "Please, provide a directory to scan"
   read Dir
-#exit $Dir
+}
+
+show_messsage () {
+  if [ $? -eq 0 ]
+    then
+      echo "OPERATION DONE!"
+    else
+      echo "OPERATION FAILED!"
+  fi
+}
+
+separator () {
+  echo "-----------------------------------------------------------"
 }
