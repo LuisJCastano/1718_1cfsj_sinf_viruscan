@@ -12,48 +12,77 @@ do
   case $Option in
     1 )
       echo "1 .- Install"
+      separator
+      echo "installing..."
       sudo apt-get install clamav clamav-daemon -y > /dev/null 2> /dev/null
 
-      if [ $? -eq 0 ]
-        then
-          echo "Installed correctly"
-        else
-          echo "Installation failed"
-      fi
+      show_messsage
+      separator
       ;;
 
     2 )
       echo "2 .- Update database clamav"
-      sudo freshclam > /dev/null 2> /dev/null
+      separator
+      echo "updating database..."
+      sudo fresohclam > /dev/null 2> /dev/null
 
-      if [ $? -eq 0 ]
-        then
-          echo "Update correctly"
-        else
-          echo "Updated failed"
-      fi
+      show_messsage
+      separator
       ;;
 
     3 )
-      echo "3 .- Scan directory."
+      echo "3 .- Scan directory and remove infected files."
+      separator
       provide_dir
       echo "scanning "$Dir"..."
-      clamscan /$Dir
+      clamscan /$Dir/ --remove
+      separator
       ;;
 
     4 )
       echo "4 .- Scan all"
+      separator
+      echo "scanning all, please wait..."
       sudo clamscan -r /
+      separator
       ;;
 
     5 )
-      echo "Exit"
+      echo "5 .- Remove clamav"
+      echo "removing clamav :(..."
+      separator
+      sudo apt-get remove clamav -y > /dev/null 2> /dev/null
+
+      show_messsage
+      separator
+      ;;
+
+    6 )
+      echo "6 .- Show version"
+      separator
+      sudo clamscan -V
+      separator
+
+      ;;
+
+    7 )
+      echo "7 .- Help"
+      separator
+      sudo clamscan -h
+      separator
+
+      ;;
+
+    8 )
+      echo "8 .- Exit"
       clear
       exit 1
       ;;
 
     * )
+      separator
       echo "sorry, wrong option"
+      separator
       exit 1
       ;;
 
