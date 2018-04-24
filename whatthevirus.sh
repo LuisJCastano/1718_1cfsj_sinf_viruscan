@@ -14,7 +14,7 @@ do
       echo "1 .- Install"
       sudo apt-get install clamav clamav-daemon -y > /dev/null 2> /dev/null
 
-      if [ $? = 0 ]
+      if [ $? -eq 0 ]
         then
           echo "Installed correctly"
         else
@@ -26,7 +26,7 @@ do
       echo "2 .- Update database clamav"
       sudo freshclam > /dev/null 2> /dev/null
 
-      if [ $? = 0 ]
+      if [ $? -eq 0 ]
         then
           echo "Update correctly"
         else
